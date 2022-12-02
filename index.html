@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2048</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header id="page-title"><p>2048</p></header>
+    <section id="how-to-play">
+      <p>
+        <strong class="title">How To Play:</strong> Use
+        <span class="emphasize">arrow keys</span> to make moves. Two colliding
+        <span class="emphasize">same values merge into one</span> and they
+        <span class="emphasize">double</span>.
+        <br />
+        Press 'R' to restart.
+      </p>
+    </section>
+    <section id="game-section">
+      <div id="game-board" class="game-over">
+        <div class="block"><p></p></div>
+        <div class="block"><p></p></div>
+        <div class="block"><p></p></div>
+        <div class="block"><p></p></div>
+        <div class="block"><p></p></div>
+        <div class="block"><p></p></div>
+        <div class="block"><p></p></div>
+        <div class="block"><p></p></div>
+        <div class="block"><p></p></div>
+        <div class="block"><p></p></div>
+        <div class="block"><p></p></div>
+        <div class="block"><p></p></div>
+        <div class="block"><p></p></div>
+        <div class="block"><p></p></div>
+        <div class="block"><p></p></div>
+        <div class="block"><p></p></div>
+      </div>
+    </section>
+
+    <section id="score">
+      <div id="high-score" class="score">
+        <p class="title">HIGH SCORE</p>
+        <p class="high-score"></p>
+      </div>
+      <div id="current-score" class="score">
+        <p class="title">SCORE</p>
+        <p class="current-score"></p>
+      </div>
+    </section>
+    <footer>
+      <p style="display: inline-block">by&nbsp</p>
+      <a href="https://github.com/firatksee" target="blank">Fırat Köse</a>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
