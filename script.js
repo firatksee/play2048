@@ -218,10 +218,6 @@ let touchendX;
 let touchstartY;
 let touchendY;
 
-document.on("touchstart", function (e) {
-  e.preventDefault();
-});
-
 function checkDirection() {
   let dX = touchendX - touchstartX;
   let dY = touchendY - touchstartY;
