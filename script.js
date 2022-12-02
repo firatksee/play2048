@@ -1,4 +1,4 @@
-//elements
+//elementscurrent-score
 const game_board_html = document.querySelector(".game-board");
 const first_block_html = game_board_html.firstElementChild;
 const high_score_html = document.querySelector(".high-score");
@@ -179,6 +179,14 @@ function create_board(n) {
   ];
 }
 
+function disableScroll() {
+  scrollTop = window.pageYOffset;
+  scrollLeft = window.pageXOffset;
+  window.onscroll = function () {
+    window.scrollTo(scrollLeft, scrollTop);
+  };
+}
+
 //initiate the game
 if (is_game_board_empty()) place_2();
 draw();
@@ -213,10 +221,11 @@ document.onkeydown = function (e) {
 };
 
 //mobile
-let touchstartX = 0;
-let touchendX = 0;
-let touchstartY = 0;
-let touchendY = 0;
+let touchstartX;
+let touchendX;
+let touchstartY;
+let touchendY;
+disableScroll();
 
 function checkDirection() {
   let dX = touchendX - touchstartX;
