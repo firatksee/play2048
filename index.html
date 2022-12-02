@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header id="page-title"><p>2048</p></header>
-    <section id="how-to-play">
+    <header class="page-title"><p>2048</p></header>
+    <section class="how-to-play">
       <p>
         <strong class="title">How To Play:</strong> Use
         <span class="emphasize">arrow keys</span> to make moves. Two colliding
@@ -19,8 +19,8 @@
         Press 'R' to restart.
       </p>
     </section>
-    <section id="game-section">
-      <div id="game-board" class="game-over">
+    <section class="game-section">
+      <div class="game-board game-over">
         <div class="block"><p></p></div>
         <div class="block"><p></p></div>
         <div class="block"><p></p></div>
@@ -40,14 +40,17 @@
       </div>
     </section>
 
-    <section id="score">
-      <div id="high-score" class="score">
+    <section class="side">
+      <div class="high-score side-item">
         <p class="title">HIGH SCORE</p>
         <p class="high-score"></p>
       </div>
-      <div id="current-score" class="score">
+      <div class="current-score side-item">
         <p class="title">SCORE</p>
         <p class="current-score"></p>
+      </div>
+      <div onclick="restart()" class="restart-button side-item btn">
+        <p class="title">RESTART</p>
       </div>
     </section>
     <footer>

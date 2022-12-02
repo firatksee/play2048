@@ -23,7 +23,7 @@ body {
   grid-template-rows: repeat(3, 1fr);
 }
 
-#page-title {
+.page-title {
   font-size: 5rem;
   color: #151c25;
   grid-column: 2 / span 1;
@@ -32,7 +32,7 @@ body {
   justify-content: center;
 }
 
-#how-to-play {
+.how-to-play {
   font-size: 2rem;
   color: var(--text-color);
   padding: 5px 0 0 15px;
@@ -41,11 +41,11 @@ body {
   justify-content: end;
 }
 
-#how-to-play p {
+.how-to-play p {
   width: 250px;
 }
 
-#score {
+.side {
   font-size: 1.4rem;
   color: var(--text-color);
   padding: 5px 15px;
@@ -55,7 +55,7 @@ body {
   gap: 10px;
 }
 
-.score {
+.side-item {
   width: 10rem;
   height: 4rem;
   background: #353c45;
@@ -66,7 +66,7 @@ body {
   justify-content: center;
 }
 
-#game-section {
+.game-section {
   min-width: var(--game-board-size);
   min-height: var(--game-board-size);
   grid-area: 2 / 2 / span 1 / span 1;
@@ -75,7 +75,7 @@ body {
   justify-content: center;
 }
 
-#game-board {
+.game-board {
   width: var(--game-board-size);
   height: var(--game-board-size);
   background-color: #353c45;
@@ -149,8 +149,12 @@ strong.title {
   color: var(--emphasize-color);
 }
 
+.btn {
+  cursor: pointer;
+}
+
 @media (max-width: 920px) {
-  #how-to-play {
+  .how-to-play {
     grid-area: 3 / 2 / span 1 / span 1;
     justify-content: start;
     padding: 15px 0 0;
@@ -160,22 +164,22 @@ strong.title {
 @media (max-width: 640px) {
   body {
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: 8% 8% 1fr 1fr;
   }
-  #page-title {
+  .page-title {
     grid-column: 2 / span 2;
   }
-  #how-to-play {
+  .how-to-play {
     width: auto;
     grid-area: 4 / 2 / span 1 / span 1;
   }
-  #score {
+  .side {
     grid-area: 2 / 2 / span 1 / span 2;
     flex-direction: row;
     justify-content: center;
     align-items: center;
   }
-  #game-section {
+  .game-section {
     grid-area: 3 / 2 / span 1 / span 2;
   }
   footer {

@@ -1,5 +1,5 @@
 //elements
-const game_board_html = document.querySelector("#game-board");
+const game_board_html = document.querySelector(".game-board");
 const first_block_html = game_board_html.firstElementChild;
 const high_score_html = document.querySelector(".high-score");
 const current_score_html = document.querySelector(".current-score");
@@ -62,48 +62,6 @@ function update() {
     if (score > high_score) localStorage.setItem("high_score", score);
     game_board_html.classList.add("game-over-show");
     set_game_state(create_board(0), 0);
-  }
-}
-
-document.onkeydown = function (event) {
-  switch (event.keyCode) {
-    case 37: //left
-      event.preventDefault();
-      move(1, 0, [0, grid_size - 1, 1], [0, grid_size, 1]);
-      update();
-      break;
-    case 38: //up
-      event.preventDefault();
-      move(0, 1, [0, grid_size, 1], [0, grid_size - 1, 1]);
-      update();
-      break;
-    case 39: //right
-      event.preventDefault();
-      move(-1, 0, [grid_size - 1, 0, -1], [0, grid_size, 1]);
-      update();
-      break;
-    case 40: //down
-      event.preventDefault();
-      move(0, -1, [0, grid_size, 1], [grid_size - 1, 0, -1]);
-      update();
-      break;
-    case 82:
-      restart();
-      break;
-  }
-};
-
-function place_2() {
-  if (!is_game_board_full()) {
-    while (true) {
-      let y = Math.floor(Math.random() * grid_size);
-      let x = Math.floor(Math.random() * grid_size);
-
-      if (game_board[y][x] === 0) {
-        game_board[y][x] = 2;
-        return;
-      }
-    }
   }
 }
 
@@ -171,6 +129,20 @@ function move(ax, ay, x_range, y_range) {
   if (move) place_2();
 }
 
+function place_2() {
+  if (!is_game_board_full()) {
+    while (true) {
+      let y = Math.floor(Math.random() * grid_size);
+      let x = Math.floor(Math.random() * grid_size);
+
+      if (game_board[y][x] === 0) {
+        game_board[y][x] = 2;
+        return;
+      }
+    }
+  }
+}
+
 function is_game_board_full() {
   for (let y in game_board) {
     for (let x of game_board[y]) {
@@ -211,3 +183,73 @@ function create_board(n) {
 if (is_game_board_empty()) place_2();
 draw();
 high_score_html.textContent = high_score;
+
+document.onkeydown = function (e) {
+  switch (e.keyCode) {
+    case 37: //left
+      e.preventDefault();
+      move(1, 0, [0, grid_size - 1, 1], [0, grid_size, 1]);
+      update();
+      break;
+    case 38: //up
+      e.preventDefault();
+      move(0, 1, [0, grid_size, 1], [0, grid_size - 1, 1]);
+      update();
+      break;
+    case 39: //right
+      e.preventDefault();
+      move(-1, 0, [grid_size - 1, 0, -1], [0, grid_size, 1]);
+      update();
+      break;
+    case 40: //down
+      e.preventDefault();
+      move(0, -1, [0, grid_size, 1], [grid_size - 1, 0, -1]);
+      update();
+      break;
+    case 82:
+      restart();
+      break;
+  }
+};
+
+//mobile
+let touchstartX = 0;
+let touchendX = 0;
+let touchstartY = 0;
+let touchendY = 0;
+
+function checkDirection() {
+  let dX = touchendX - touchstartX;
+  let dY = touchendY - touchstartY;
+  if (Math.abs(dX) > Math.abs(dY)) {
+    if (dX < 0) {
+      move(1, 0, [0, grid_size - 1, 1], [0, grid_size, 1]);
+      update();
+    }
+    if (dX > 0) {
+      move(-1, 0, [grid_size - 1, 0, -1], [0, grid_size, 1]);
+      update();
+    }
+  } else {
+    if (dY < 0) {
+      move(0, 1, [0, grid_size, 1], [0, grid_size - 1, 1]);
+      update();
+    }
+    if (dY > 0) {
+      move(0, -1, [0, grid_size, 1], [grid_size - 1, 0, -1]);
+      update();
+    }
+  }
+}
+
+document.addEventListener("touchstart", (e) => {
+  touchstartX = e.changedTouches[0].screenX;
+  touchstartY = e.changedTouches[0].screenY;
+});
+
+document.addEventListener("touchend", (e) => {
+  touchendX = e.changedTouches[0].screenX;
+  touchendY = e.changedTouches[0].screenY;
+
+  checkDirection();
+});
