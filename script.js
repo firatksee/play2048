@@ -179,14 +179,6 @@ function create_board(n) {
   ];
 }
 
-function disableScroll() {
-  scrollTop = window.pageYOffset;
-  scrollLeft = window.pageXOffset;
-  window.onscroll = function () {
-    window.scrollTo(scrollLeft, scrollTop);
-  };
-}
-
 //initiate the game
 if (is_game_board_empty()) place_2();
 draw();
@@ -225,7 +217,10 @@ let touchstartX;
 let touchendX;
 let touchstartY;
 let touchendY;
-disableScroll();
+
+document.on("touchstart", function (e) {
+  e.preventDefault();
+});
 
 function checkDirection() {
   let dX = touchendX - touchstartX;
