@@ -1,5 +1,5 @@
 //elementscurrent-score
-const game_board_html = document.querySelector(".game-board");
+const game_board_html = document.querySelector("#game-board");
 const first_block_html = game_board_html.firstElementChild;
 const high_score_html = document.querySelector(".high-score");
 const current_score_html = document.querySelector(".current-score");
