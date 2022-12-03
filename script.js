@@ -47,12 +47,12 @@ function draw() {
 
   let current_block_html = first_block_html;
   for (let i = 0; i < grid_size ** 2; i++) {
-    current_block_html.firstElementChild.textContent =
+    current_block_html.firstElementChild.innerText =
       game_board_values[i] === 0 ? "" : game_board_values[i];
     current_block_html.style.background = colors[game_board_values[i]];
     current_block_html = current_block_html.nextElementSibling;
   }
-  current_score_html.textContent = score;
+  current_score_html.innerText = score;
 }
 
 function update() {
@@ -91,7 +91,7 @@ function restart() {
   if (score > high_score) {
     localStorage.setItem("high_score", score);
     high_score = score;
-    high_score_html.textContent = high_score;
+    high_score_html.innerText = high_score;
   }
   score = 0;
   game_board_html.classList.remove("game-over-show");
@@ -182,7 +182,7 @@ function create_board(n) {
 //initiate the game
 if (is_game_board_empty()) place_2();
 draw();
-high_score_html.textContent = high_score;
+high_score_html.innerText = high_score;
 
 document.onkeydown = function (e) {
   switch (e.keyCode) {
@@ -250,5 +250,6 @@ document.addEventListener("touchstart", (e) => {
 document.addEventListener("touchend", (e) => {
   touchendX = e.changedTouches[0].screenX;
   touchendY = e.changedTouches[0].screenY;
+
   checkDirection();
 });
